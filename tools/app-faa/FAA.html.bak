@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>NPS Survey, jQuery Survey Library Example</title><meta name="viewport" content="width=device-width"/>
+        <script src="https://unpkg.com/jquery"></script>
+        <script src="https://unpkg.com/survey-jquery@1.9.26/survey.jquery.min.js"></script>
+        <link href="https://unpkg.com/survey-core@1.9.26/defaultV2.min.css" type="text/css" rel="stylesheet"/>
+        <link rel="stylesheet" href="./index.css"></head>
+    <body>
+        <div id="surveyElement" style="display:block;width:50%;"></div>
+        <div id="surveyResult" style-"display:inline-block; width:50%;"> 
+		 <p> Scasp Results will be shown here </p>
+		 </div>
+        <script type="text/javascript" src="./index.js"></script>
+    </body>
+</html>

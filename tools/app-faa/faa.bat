@@ -1,0 +1,1 @@
+start docker run -v "C:\Users\223057479\FAA":/FAA -it docker-scasp /bin/sh

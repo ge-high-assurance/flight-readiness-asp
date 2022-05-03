@@ -1,0 +1,86 @@
+./go_vessel 
+
+
+*************	 Clingo: ?- holdsAt(level(11),T) 	 precision(1) 
+
+clingo version 5.2.0
+Reading from ../theory.clingo ...
+../theory.clingo:22:42-60: info: atom does not occur in any rule head:
+  initiallyN(Fluent)
+
+Solving...
+UNSATISFIABLE
+
+Models       : 0
+Calls        : 1
+Time         : 0.008s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.008s
+
+real	0m0.014s
+user	0m0.010s
+sys	0m0.002s
+
+	 This result is incorrect due to the tiny precision
+
+
+
+*************	 Clingo: ?- holdsAt(level(110),T) 	 precision(10) 
+
+clingo version 5.2.0
+Reading from ../theory.clingo ...
+../theory.clingo:22:42-60: info: atom does not occur in any rule head:
+  initiallyN(Fluent)
+
+Solving...
+Answer: 1
+level(110,133)
+SATISFIABLE
+
+Models       : 1
+Calls        : 1
+Time         : 0.391s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.389s
+
+real	0m0.480s
+user	0m0.461s
+sys	0m0.015s
+
+
+*************	 Clingo: ?- holdsAt(level(1100),T) 	 precision(100) 
+
+clingo version 5.2.0
+Reading from ../theory.clingo ...
+../theory.clingo:22:42-60: info: atom does not occur in any rule head:
+  initiallyN(Fluent)
+
+Solving...
+Answer: 1
+level(1100,1325)
+SATISFIABLE
+
+Models       : 1
+Calls        : 1
+Time         : 57.314s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 57.033s
+
+real	1m14.662s
+user	1m12.624s
+sys	0m1.730s
+
+
+*************	 s(CASP): ?- holdsAt(level(11),T) 
+
+RENAMED_QUERY:	?- holdsAt(level(11),A).
+
+	ANSWER:	1 (in 36.065 ms)
+
+MODEL:
+holdsAt(level(11),53/4) ,  initiates(tapOn,filling,5) ,  happens(tapOn,5) ,  trajectory(filling,5,level(11),53/4) ,  max_level(16) ,  not max_level(10) ,  holdsAt(level(0),5) ,  initiallyP(level(0)) ,  not stoppedIn(0,level(0),5) ,  not terminates(B │{B\=tapOff},level(0),C │{C#>0,C#<5}) ,  not terminates(tapOff,level(0),C │{C#>0,C#<5}) ,  not releases(D │{D\=tapOn},level(0),E │{E#>0,E#<5}) ,  not releases(tapOn,level(0),E │{E#>0,E#<5}) ,  not happens(tapOn,E │{E#>0,E#<5}) ,  not stoppedIn(5,filling,53/4) ,  not terminates(F │{F\=tapOff},filling,G │{G#>5,G#<53/4}) ,  terminates(tapOff,filling,G │{G#>5,G#<53/4}) ,  not happens(tapOff,G │{G#>5,G#<53/4}) ,  not releases(H │{H\=tapOn},filling,I │{I#>5,I#<53/4}) ,  not releases(tapOn,filling,I │{I#>5,I#<53/4}) ,  not -holdsAt(J │{J\=filling},K │{K#=<0}) ,  not -holdsAt(J │{J\=filling},L │{L#>0}) ,  not terminates(M │{M\=tapOff},J │{J\=filling},N │{N#=<0}) ,  not terminates(tapOff,J │{J\=filling},N │{N#=<0}) ,  not -holdsAt(filling,O │{O#=<0}) ,  not -holdsAt(filling,P │{P#>0}) ,  not terminates(Q │{Q\=tapOff},filling,R │{R#=<0}) ,  terminates(tapOff,filling,R │{R#=<0}) ,  not happens(tapOff,R │{R#=<0})
+
+BINDINGS: 
+A = 53/4
+
+
+real	0m0.377s
+user	0m0.277s
+sys	0m0.070s
