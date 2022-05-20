@@ -9,7 +9,8 @@ format_tree = function(tree, partial){
 format_tree_helper = function(parent, children, partial){
     if(children !== "[]"){
         partial += "<ul>";
-        partial += parent ;
+        formatted_text = english_text.hasOwnProperty(parent) ? english_text[parent] : parent;
+        partial += formatted_text ;
         partial = process_children(children, partial);
         partial += "</ul>" 
     }
@@ -61,27 +62,33 @@ reduce = function(list, operator, unit){
 }
 format_json_tree = function(tree, partial){
     partial += "<ul>";
+    var term = "";
     var parent = tree['args'][0];
     if(typeof(parent) === 'object'){
-          partial += parent['functor'] + "(";
+          term += parent['functor'] + "(";
           if(parent['args'].length > 1){
-             partial += p
+             term += p
           }
           else{
             for(const index in parent['args']){
               if(index < parent['args'].length - 1) {
-                partial += parent['args'][index] + ",";
+                term += parent['args'][index] + ",";
               }
               else{
-                  partial += parent['args'][index];
+                  term += parent['args'][index];
               }
             }
             
           }
-          partial += ")";
+          term += ")";
+          formatted_text = english_text.hasOwnProperty(term) ? english_text[term] : term;
+          partial += formatted_text;
+         
     }
     else{
-    partial += parent;
+        
+    formatted_text = english_text.hasOwnProperty(parent) ? english_text[parent] : parent;
+    partial += formatted_text;
     }
     partial = format_children(tree['args'][1], partial);
     partial += "</ul>";

@@ -14,10 +14,11 @@
         "isRequired": true
        }
       ],
-      "title": "General AMA Rules ",
+      "title": "General AMA Rules  (1/10)",
       "description": "Does the pilot have prior history of violations?"
      },
      {
+      "title": "General AMA Rules  (2/10)",   
       "name": "page2",
       "elements": [
        {
@@ -43,6 +44,7 @@
       ]
      },
      {
+      "title": "General AMA Rules  (3/10)",   
       "name": "page3",
       "elements": [
        {
@@ -75,25 +77,28 @@
       ]
      },
      {
+      "title": "General AMA Rules  (4/10)",   
+     
       "name": "page4",
       "elements": [
        {
-        "type": "text",
+        "type": "boolean",
         "name": "max_takeoff_weight",
-        "title": "What is the maximum takeoff weight of the aircraft? (in pounds)",
+        "title": "Is the maximum takeoff weight greater than 55 pounds?",
         "isRequired": true,
-        "inputMask": "decimal"
        },
        {
         "type": "boolean",
         "name": "flown_under_ama_rules",
-        "visibleIf": "{max_takeoff_weight} > 55",
+        "visibleIf": "{max_takeoff_weight} = true",
         "title": "The takeoff weight is above 55 pounds. Is the aircraft flown under experimental AMA rules?",
         "isRequired": true
        }
       ]
      },
      {
+      "title": "General AMA Rules  (5/10)",   
+     
       "name": "page5",
       "elements": [
        {
@@ -112,6 +117,8 @@
       ]
      },
      {
+      "title": "General AMA Rules  (6/10)",   
+     
       "name": "page6",
       "elements": [
        {
@@ -137,6 +144,8 @@
       ]
      },
      {
+      "title": "General AMA Rules  (7/10)",   
+     
       "name": "page7",
       "elements": [
        {
@@ -148,6 +157,8 @@
       ]
      },
      {
+      "title": "General AMA Rules  (8/10)",   
+     
       "name": "page8",
       "elements": [
        {
@@ -194,6 +205,8 @@
       ]
      },
      {
+      "title": "General AMA Rules  (9/10)",   
+     
       "name": "page9",
       "elements": [
        {
@@ -205,6 +218,8 @@
       ]
      },
      {
+      "title": "General AMA Rules  (10/10)",   
+     
       "name": "page10",
       "elements": [
        {
