@@ -1,0 +1,962 @@
+<!doctype html>
+ <html>
+ <head>
+ <meta charset="utf-8">
+ <title>c(ASP) Justification</title>
+ <style>
+.treemenu li { list-style: none; }
+.treemenu .toggler { cursor: pointer; }
+.treemenu .toggler:before { display: inline-block; margin-right: 2pt; }
+li.tree-empty > .toggler { opacity: 0.3; cursor: default; }
+li.tree-empty > .toggler:before { content: " "; }
+li.tree-closed > .toggler:before {
+    content: "";
+    height: 0;
+    width: 0;
+    border-color: transparent blue;
+    border-style: solid;
+    border-width: 0.25em 0 0.25em 0.5em;
+}
+li.tree-opened > .toggler:before {
+    content: "";
+    height: 0;
+    width: 0;
+    border-color: blue transparent ;
+    border-style: solid;
+    border-width: 0.5em 0.25em 0 0.25em;
+}
+</style>
+ 
+ <link rel="icon" href="logo.ico">
+ 
+ </head>
+ 
+ <body style="font-size:15px;background: #ECECEC; margin:80px; color:#333;">
+ 
+<h3>Query</h3>
+<b>
+  <font color=blue>?-</font> 
+flies(A).
+<br><br>
+ <br> 
+A = tweety ?<br>
+</b>
+<br><br>
+<h3>Model</h3>
+
+MODEL:
+flies(tweety) ,  bird(tweety) ,  not ab(tweety) ,  not penguin(tweety) ,  not wounded_bird(tweety) ,  -ab(B │{B \= john,B \= sam}) ,  not ab(B │{B \= john,B \= sam}) ,  not penguin(B │{B \= john,B \= sam}) ,  not wounded_bird(B │{B \= john,B \= sam}) ,  not ab(B │{B \= john,B \= sam}) ,  not penguin(B │{B \= john,B \= sam}) ,  not wounded_bird(B │{B \= john,B \= sam}) ,  not -ab(john) ,  ab(john) ,  wounded_bird(john) ,  not -ab(sam) ,  ab(sam) ,  penguin(sam) ,  -penguin(C │{C \= sam}) ,  not penguin(C │{C \= sam}) ,  not penguin(C │{C \= sam}) ,  not -penguin(sam) ,  -wounded_bird(D │{D \= john}) ,  not wounded_bird(D │{D \= john}) ,  not wounded_bird(D │{D \= john}) ,  not -wounded_bird(john) ,  -bird(E │{E \= john,E \= sam,E \= tweety}) ,  not bird(E │{E \= john,E \= sam,E \= tweety}) ,  not penguin(E │{E \= john,E \= sam,E \= tweety}) ,  not wounded_bird(E │{E \= john,E \= sam,E \= tweety}) ,  not bird(E │{E \= john,E \= sam,E \= tweety}) ,  not penguin(E │{E \= john,E \= sam,E \= tweety}) ,  not wounded_bird(E │{E \= john,E \= sam,E \= tweety}) ,  not -bird(john) ,  bird(john) ,  not -bird(sam) ,  bird(sam) ,  not -bird(tweety) ,  -flies(F │{F \= john,F \= sam,F \= tweety}) ,  -bird(F │{F \= john,F \= sam,F \= tweety}) ,  not bird(F │{F \= john,F \= sam,F \= tweety}) ,  not penguin(F │{F \= john,F \= sam,F \= tweety}) ,  not wounded_bird(F │{F \= john,F \= sam,F \= tweety}) ,  not flies(F │{F \= john,F \= sam,F \= tweety}) ,  not bird(F │{F \= john,F \= sam,F \= tweety}) ,  not penguin(F │{F \= john,F \= sam,F \= tweety}) ,  not wounded_bird(F │{F \= john,F \= sam,F \= tweety}) ,  -flies(john) ,  not flies(john) ,  -flies(sam) ,  not flies(sam) ,  not -flies(tweety)
+
+<br><br>
+<h3> Justification <button onclick="expand()">Expand All</button><button onclick="collapse()">Collapse All</button></h3>
+ <ul class="tree">
+     <li> 
+       There is a conclusion of flies, for tweety
+       <ul>
+         <li> 
+           There is a conclusion of bird, for tweety
+         </li>
+         <li> 
+           There is no conclusion of ab, for tweety
+           <ul>
+             <li> 
+               1) There is no conclusion of ab, for tweety
+               <ul>
+                 <li> 
+                   There is no conclusion of penguin, for tweety
+                   <ul>
+                     <li> 
+                       1) There is no conclusion of penguin, for tweety
+                       <ul>
+                         <li> 
+                           tweety is not equal sam
+                         </li> 
+                     </ul> 
+                     </li> 
+                 </ul> 
+                 </li> 
+             </ul> 
+             </li> 
+             <li> 
+               2) There is no conclusion of ab, for tweety
+               <ul>
+                 <li> 
+                   There is no conclusion of wounded_bird, for tweety
+                   <ul>
+                     <li> 
+                       1) There is no conclusion of wounded_bird, for tweety
+                       <ul>
+                         <li> 
+                           tweety is not equal john
+                         </li> 
+                     </ul> 
+                     </li> 
+                 </ul> 
+                 </li> 
+             </ul> 
+             </li> 
+         </ul> 
+         </li> 
+     </ul> 
+     </li> 
+     <li> 
+       The global constraints hold
+       <ul>
+         <li> 
+           Let's see each non-monotonic-rule
+           <ul>
+             <li> 
+               For the rule number 1 
+               <ul>
+                 <li> 
+                   There is no contradiction 
+                   <ul>
+                     <li> 
+                       For any possible value
+                       <ul>
+                         <li> 
+                           There is no contradiction, for B not equal john, and not equal sam
+                           <ul>
+                             <li> 
+                               There is a conclusion of -ab, for B not equal john, and not equal sam
+                               <ul>
+                                 <li> 
+                                   There is no conclusion of ab, for B not equal john, and not equal sam
+                                   <ul>
+                                     <li> 
+                                       1) There is no conclusion of ab, for B not equal john, and not equal sam
+                                       <ul>
+                                         <li> 
+                                           There is no conclusion of penguin, for B not equal john, and not equal sam
+                                           <ul>
+                                             <li> 
+                                               1) There is no conclusion of penguin, for B not equal john, and not equal sam
+                                               <ul>
+                                                 <li> 
+                                                   B is not equal sam
+                                                 </li> 
+                                             </ul> 
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                     <li> 
+                                       2) There is no conclusion of ab, for B not equal john, and not equal sam
+                                       <ul>
+                                         <li> 
+                                           There is no conclusion of wounded_bird, for B not equal john, and not equal sam
+                                           <ul>
+                                             <li> 
+                                               1) There is no conclusion of wounded_bird, for B not equal john, and not equal sam
+                                               <ul>
+                                                 <li> 
+                                                   B is not equal john
+                                                 </li> 
+                                             </ul> 
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                             <li> 
+                               There is no conclusion of ab, for B not equal john, and not equal sam
+                               <ul>
+                                 <li> 
+                                   1) There is no conclusion of ab, for B not equal john, and not equal sam
+                                   <ul>
+                                     <li> 
+                                       There is no conclusion of penguin, for B not equal john, and not equal sam
+                                       <ul>
+                                         <li> 
+                                           1) There is no conclusion of penguin, for B not equal john, and not equal sam
+                                           <ul>
+                                             <li> 
+                                               B is not equal sam
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                                 <li> 
+                                   2) There is no conclusion of ab, for B not equal john, and not equal sam
+                                   <ul>
+                                     <li> 
+                                       There is no conclusion of wounded_bird, for B not equal john, and not equal sam
+                                       <ul>
+                                         <li> 
+                                           1) There is no conclusion of wounded_bird, for B not equal john, and not equal sam
+                                           <ul>
+                                             <li> 
+                                               B is not equal john
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                         <li> 
+                           There is no contradiction, for john
+                           <ul>
+                             <li> 
+                               There is no conclusion of -ab, for john
+                               <ul>
+                                 <li> 
+                                   1) There is no conclusion of -ab, for john
+                                   <ul>
+                                     <li> 
+                                       There is a conclusion of ab, for john
+                                       <ul>
+                                         <li> 
+                                           There is a conclusion of wounded_bird, for john
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                         <li> 
+                           There is no contradiction, for sam
+                           <ul>
+                             <li> 
+                               There is no conclusion of -ab, for sam
+                               <ul>
+                                 <li> 
+                                   1) There is no conclusion of -ab, for sam
+                                   <ul>
+                                     <li> 
+                                       There is a conclusion of ab, for sam
+                                       <ul>
+                                         <li> 
+                                           There is a conclusion of penguin, for sam
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                     </ul> 
+                     </li> 
+                 </ul> 
+                 </li> 
+             </ul> 
+             </li> 
+             <li> 
+               For the rule number 2 
+               <ul>
+                 <li> 
+                   There is no contradiction 
+                   <ul>
+                     <li> 
+                       For any possible value
+                       <ul>
+                         <li> 
+                           There is no contradiction, for C not equal sam
+                           <ul>
+                             <li> 
+                               There is a conclusion of -penguin, for C not equal sam
+                               <ul>
+                                 <li> 
+                                   There is no conclusion of penguin, for C not equal sam
+                                   <ul>
+                                     <li> 
+                                       1) There is no conclusion of penguin, for C not equal sam
+                                       <ul>
+                                         <li> 
+                                           C is not equal sam
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                             <li> 
+                               There is no conclusion of penguin, for C not equal sam
+                               <ul>
+                                 <li> 
+                                   1) There is no conclusion of penguin, for C not equal sam
+                                   <ul>
+                                     <li> 
+                                       C is not equal sam
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                         <li> 
+                           There is no contradiction, for sam
+                           <ul>
+                             <li> 
+                               There is no conclusion of -penguin, for sam
+                               <ul>
+                                 <li> 
+                                   1) There is no conclusion of -penguin, for sam
+                                   <ul>
+                                     <li> 
+                                       There is a conclusion of penguin, for sam, as we saw before
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                     </ul> 
+                     </li> 
+                 </ul> 
+                 </li> 
+             </ul> 
+             </li> 
+             <li> 
+               For the rule number 3 
+               <ul>
+                 <li> 
+                   There is no contradiction 
+                   <ul>
+                     <li> 
+                       For any possible value
+                       <ul>
+                         <li> 
+                           There is no contradiction, for D not equal john
+                           <ul>
+                             <li> 
+                               There is a conclusion of -wounded_bird, for D not equal john
+                               <ul>
+                                 <li> 
+                                   There is no conclusion of wounded_bird, for D not equal john
+                                   <ul>
+                                     <li> 
+                                       1) There is no conclusion of wounded_bird, for D not equal john
+                                       <ul>
+                                         <li> 
+                                           D is not equal john
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                             <li> 
+                               There is no conclusion of wounded_bird, for D not equal john
+                               <ul>
+                                 <li> 
+                                   1) There is no conclusion of wounded_bird, for D not equal john
+                                   <ul>
+                                     <li> 
+                                       D is not equal john
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                         <li> 
+                           There is no contradiction, for john
+                           <ul>
+                             <li> 
+                               There is no conclusion of -wounded_bird, for john
+                               <ul>
+                                 <li> 
+                                   1) There is no conclusion of -wounded_bird, for john
+                                   <ul>
+                                     <li> 
+                                       There is a conclusion of wounded_bird, for john, as we saw before
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                     </ul> 
+                     </li> 
+                 </ul> 
+                 </li> 
+             </ul> 
+             </li> 
+             <li> 
+               For the rule number 4 
+               <ul>
+                 <li> 
+                   There is no contradiction 
+                   <ul>
+                     <li> 
+                       For any possible value
+                       <ul>
+                         <li> 
+                           There is no contradiction, for E not equal john, not equal sam, and not equal tweety
+                           <ul>
+                             <li> 
+                               There is a conclusion of -bird, for E not equal john, not equal sam, and not equal tweety
+                               <ul>
+                                 <li> 
+                                   There is no conclusion of bird, for E not equal john, not equal sam, and not equal tweety
+                                   <ul>
+                                     <li> 
+                                       1) There is no conclusion of bird, for E not equal john, not equal sam, and not equal tweety
+                                       <ul>
+                                         <li> 
+                                           E is not equal tweety
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                     <li> 
+                                       2) There is no conclusion of bird, for E not equal john, not equal sam, and not equal tweety
+                                       <ul>
+                                         <li> 
+                                           There is no conclusion of penguin, for E not equal john, not equal sam, and not equal tweety
+                                           <ul>
+                                             <li> 
+                                               1) There is no conclusion of penguin, for E not equal john, not equal sam, and not equal tweety
+                                               <ul>
+                                                 <li> 
+                                                   E is not equal sam
+                                                 </li> 
+                                             </ul> 
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                     <li> 
+                                       3) There is no conclusion of bird, for E not equal john, not equal sam, and not equal tweety
+                                       <ul>
+                                         <li> 
+                                           There is no conclusion of wounded_bird, for E not equal john, not equal sam, and not equal tweety
+                                           <ul>
+                                             <li> 
+                                               1) There is no conclusion of wounded_bird, for E not equal john, not equal sam, and not equal tweety
+                                               <ul>
+                                                 <li> 
+                                                   E is not equal john
+                                                 </li> 
+                                             </ul> 
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                             <li> 
+                               There is no conclusion of bird, for E not equal john, not equal sam, and not equal tweety
+                               <ul>
+                                 <li> 
+                                   1) There is no conclusion of bird, for E not equal john, not equal sam, and not equal tweety
+                                   <ul>
+                                     <li> 
+                                       E is not equal tweety
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                                 <li> 
+                                   2) There is no conclusion of bird, for E not equal john, not equal sam, and not equal tweety
+                                   <ul>
+                                     <li> 
+                                       There is no conclusion of penguin, for E not equal john, not equal sam, and not equal tweety
+                                       <ul>
+                                         <li> 
+                                           1) There is no conclusion of penguin, for E not equal john, not equal sam, and not equal tweety
+                                           <ul>
+                                             <li> 
+                                               E is not equal sam
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                                 <li> 
+                                   3) There is no conclusion of bird, for E not equal john, not equal sam, and not equal tweety
+                                   <ul>
+                                     <li> 
+                                       There is no conclusion of wounded_bird, for E not equal john, not equal sam, and not equal tweety
+                                       <ul>
+                                         <li> 
+                                           1) There is no conclusion of wounded_bird, for E not equal john, not equal sam, and not equal tweety
+                                           <ul>
+                                             <li> 
+                                               E is not equal john
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                         <li> 
+                           There is no contradiction, for john
+                           <ul>
+                             <li> 
+                               There is no conclusion of -bird, for john
+                               <ul>
+                                 <li> 
+                                   1) There is no conclusion of -bird, for john
+                                   <ul>
+                                     <li> 
+                                       There is a conclusion of bird, for john
+                                       <ul>
+                                         <li> 
+                                           There is a conclusion of wounded_bird, for john, as we saw before
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                         <li> 
+                           There is no contradiction, for sam
+                           <ul>
+                             <li> 
+                               There is no conclusion of -bird, for sam
+                               <ul>
+                                 <li> 
+                                   1) There is no conclusion of -bird, for sam
+                                   <ul>
+                                     <li> 
+                                       There is a conclusion of bird, for sam
+                                       <ul>
+                                         <li> 
+                                           There is a conclusion of penguin, for sam, as we saw before
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                         <li> 
+                           There is no contradiction, for tweety
+                           <ul>
+                             <li> 
+                               There is no conclusion of -bird, for tweety
+                               <ul>
+                                 <li> 
+                                   1) There is no conclusion of -bird, for tweety
+                                   <ul>
+                                     <li> 
+                                       There is a conclusion of bird, for tweety, as we saw before
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                     </ul> 
+                     </li> 
+                 </ul> 
+                 </li> 
+             </ul> 
+             </li> 
+             <li> 
+               For the rule number 5 
+               <ul>
+                 <li> 
+                   There is no contradiction 
+                   <ul>
+                     <li> 
+                       For any possible value
+                       <ul>
+                         <li> 
+                           There is no contradiction, for F not equal john, not equal sam, and not equal tweety
+                           <ul>
+                             <li> 
+                               There is a conclusion of -flies, for F not equal john, not equal sam, and not equal tweety
+                               <ul>
+                                 <li> 
+                                   There is a conclusion of -bird, for F not equal john, not equal sam, and not equal tweety
+                                   <ul>
+                                     <li> 
+                                       There is no conclusion of bird, for F not equal john, not equal sam, and not equal tweety
+                                       <ul>
+                                         <li> 
+                                           1) There is no conclusion of bird, for F not equal john, not equal sam, and not equal tweety
+                                           <ul>
+                                             <li> 
+                                               F is not equal tweety
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                         <li> 
+                                           2) There is no conclusion of bird, for F not equal john, not equal sam, and not equal tweety
+                                           <ul>
+                                             <li> 
+                                               There is no conclusion of penguin, for F not equal john, not equal sam, and not equal tweety
+                                               <ul>
+                                                 <li> 
+                                                   1) There is no conclusion of penguin, for F not equal john, not equal sam, and not equal tweety
+                                                   <ul>
+                                                     <li> 
+                                                       F is not equal sam
+                                                     </li> 
+                                                 </ul> 
+                                                 </li> 
+                                             </ul> 
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                         <li> 
+                                           3) There is no conclusion of bird, for F not equal john, not equal sam, and not equal tweety
+                                           <ul>
+                                             <li> 
+                                               There is no conclusion of wounded_bird, for F not equal john, not equal sam, and not equal tweety
+                                               <ul>
+                                                 <li> 
+                                                   1) There is no conclusion of wounded_bird, for F not equal john, not equal sam, and not equal tweety
+                                                   <ul>
+                                                     <li> 
+                                                       F is not equal john
+                                                     </li> 
+                                                 </ul> 
+                                                 </li> 
+                                             </ul> 
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                             <li> 
+                               There is no conclusion of flies, for F not equal john, not equal sam, and not equal tweety
+                               <ul>
+                                 <li> 
+                                   1) There is no conclusion of flies, for F not equal john, not equal sam, and not equal tweety
+                                   <ul>
+                                     <li> 
+                                       There is no conclusion of bird, for F not equal john, not equal sam, and not equal tweety
+                                       <ul>
+                                         <li> 
+                                           1) There is no conclusion of bird, for F not equal john, not equal sam, and not equal tweety
+                                           <ul>
+                                             <li> 
+                                               F is not equal tweety
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                         <li> 
+                                           2) There is no conclusion of bird, for F not equal john, not equal sam, and not equal tweety
+                                           <ul>
+                                             <li> 
+                                               There is no conclusion of penguin, for F not equal john, not equal sam, and not equal tweety
+                                               <ul>
+                                                 <li> 
+                                                   1) There is no conclusion of penguin, for F not equal john, not equal sam, and not equal tweety
+                                                   <ul>
+                                                     <li> 
+                                                       F is not equal sam
+                                                     </li> 
+                                                 </ul> 
+                                                 </li> 
+                                             </ul> 
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                         <li> 
+                                           3) There is no conclusion of bird, for F not equal john, not equal sam, and not equal tweety
+                                           <ul>
+                                             <li> 
+                                               There is no conclusion of wounded_bird, for F not equal john, not equal sam, and not equal tweety
+                                               <ul>
+                                                 <li> 
+                                                   1) There is no conclusion of wounded_bird, for F not equal john, not equal sam, and not equal tweety
+                                                   <ul>
+                                                     <li> 
+                                                       F is not equal john
+                                                     </li> 
+                                                 </ul> 
+                                                 </li> 
+                                             </ul> 
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                         <li> 
+                           There is no contradiction, for john
+                           <ul>
+                             <li> 
+                               There is a conclusion of -flies, for john
+                               <ul>
+                                 <li> 
+                                   There is a conclusion of ab, for john, as we saw before
+                                 </li> 
+                             </ul> 
+                             </li> 
+                             <li> 
+                               There is no conclusion of flies, for john
+                               <ul>
+                                 <li> 
+                                   1) There is no conclusion of flies, for john
+                                   <ul>
+                                     <li> 
+                                       There is a conclusion of bird, for john, as we saw before
+                                     </li>
+                                     <li> 
+                                       There is a conclusion of ab, for john, as we saw before
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                         <li> 
+                           There is no contradiction, for sam
+                           <ul>
+                             <li> 
+                               There is a conclusion of -flies, for sam
+                               <ul>
+                                 <li> 
+                                   There is a conclusion of ab, for sam, as we saw before
+                                 </li> 
+                             </ul> 
+                             </li> 
+                             <li> 
+                               There is no conclusion of flies, for sam
+                               <ul>
+                                 <li> 
+                                   1) There is no conclusion of flies, for sam
+                                   <ul>
+                                     <li> 
+                                       There is a conclusion of bird, for sam, as we saw before
+                                     </li>
+                                     <li> 
+                                       There is a conclusion of ab, for sam, as we saw before
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                         <li> 
+                           There is no contradiction, for tweety
+                           <ul>
+                             <li> 
+                               There is no conclusion of -flies, for tweety
+                               <ul>
+                                 <li> 
+                                   1) There is no conclusion of -flies, for tweety
+                                   <ul>
+                                     <li> 
+                                       There is no conclusion of ab, for tweety, as we saw before
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                                 <li> 
+                                   2) There is no conclusion of -flies, for tweety
+                                   <ul>
+                                     <li> 
+                                       There is no conclusion of -bird, for tweety, as we saw before
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                     </ul> 
+                     </li> 
+                 </ul> 
+                 </li> 
+             </ul> 
+             </li> 
+         </ul> 
+         </li> 
+     </ul> 
+     </li> 
+</ul>
+
+<script
+  src="https://code.jquery.com/jquery-1.11.2.min.js"
+  integrity="sha256-Ls0pXSlb7AYs7evhd+VLnWsZ/AqEHcXBeMZUycz/CcA="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+(function($){
+        $.fn.expand = function(options) {
+            options = options || {};
+            options.delay = options.delay || 0;
+            
+            this.find("> li").each(function() {
+                e = $(this)
+                var subtree = e.find('> ul');
+
+                if (subtree.length > 0) {
+                    e.addClass('tree-opened');
+                    e.removeClass('tree-closed');
+
+                    subtree.slideDown(options.delay);
+                    subtree.show(options.delay);
+
+                    subtree.expand(options);
+                } 
+            });
+            return true;
+        }
+
+        $.fn.collapse = function(options) {
+            options = options || {};
+            options.delay = options.delay || 0;
+            
+            this.find("> li").each(function() {
+                e = $(this)
+                var subtree = e.find('> ul');
+
+                if (subtree.length > 0) {
+                    e.removeClass('tree-opened');
+                    e.addClass('tree-closed');
+
+                    subtree.slideUp(options.delay);
+                    subtree.hide(options.delay);
+
+                    subtree.collapse(options);
+                } 
+            });
+            return true;
+        }
+
+    $.fn.treemenu = function(options) {
+        options = options || {};
+        options.delay = options.delay || 0;
+        options.openActive = options.openActive || false;
+        options.closeOther = options.closeOther || false;
+        options.activeSelector = options.activeSelector || ".active";
+
+        this.addClass("treemenu");
+
+        if (!options.nonroot) {
+            this.addClass("treemenu-root");
+        }
+
+        options.nonroot = true;
+
+        this.find("> li").each(function() {
+            e = $(this);
+            var subtree = e.find('> ul');
+            var button = e.find('.toggler').eq(0);
+
+            if(button.length == 0) {
+                // create toggler
+                var button = $('<span>');
+                button.addClass('toggler');
+                e.prepend(button);
+            }
+
+            if(subtree.length > 0) {
+                subtree.hide();
+
+                e.addClass('tree-closed');
+
+                e.find(button).click(function() {
+                    var li = $(this).parent('li');
+
+                    if (options.closeOther && li.hasClass('tree-closed')) {
+                        var siblings = li.parent('ul').find("li:not(.tree-empty)");
+                        siblings.removeClass("tree-opened");
+                        siblings.addClass("tree-closed");
+                        siblings.removeClass(options.activeSelector);
+                        siblings.find('> ul').slideUp(options.delay);
+                    }
+
+                    li.find('> ul').slideToggle(options.delay);
+                    li.toggleClass('tree-opened');
+                    li.toggleClass('tree-closed');
+                    li.toggleClass(options.activeSelector);
+                });
+
+                $(this).find('> ul').treemenu(options);
+            } else {
+                $(this).addClass('tree-empty');
+            }
+        });
+
+        if (options.openActive) {
+            var cls = this.attr("class");
+
+            this.find(options.activeSelector).each(function(){
+                var el = $(this).parent();
+
+                while (el.attr("class") !== cls) {
+                    el.find('> ul').show();
+                    if(el.prop("tagName") === 'UL') {
+                        el.show();
+                    } else if (el.prop("tagName") === 'LI') {
+                        el.removeClass('tree-closed');
+                        el.addClass("tree-opened");
+                        el.show();
+                    }
+
+                    el = el.parent();
+                }
+            });
+        }
+
+        return this;
+    }
+})(jQuery);
+</script>
+<script>
+function expand(){
+    $(".tree").expand({delay:1000});
+}
+
+function collapse(){
+    $(".tree").collapse({delay:1000});
+}
+</script>
+
+ 
+
+ <script>
+ $(function(){
+        $(".tree").treemenu({delay:100}).openActive();
+    });
+ </script>
+ 
+ </body>
+ </html>

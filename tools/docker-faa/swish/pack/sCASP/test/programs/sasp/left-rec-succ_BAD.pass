@@ -1,0 +1,1 @@
+[test_scasp:query-[r(a,b)-[p(a,b)-[]]]]-[[p(a,b),r(a,b)]].

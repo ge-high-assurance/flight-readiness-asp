@@ -1,0 +1,631 @@
+<!doctype html>
+ <html>
+ <head>
+ <meta charset="utf-8">
+ <title>c(ASP) Justification</title>
+ <style>
+.treemenu li { list-style: none; }
+.treemenu .toggler { cursor: pointer; }
+.treemenu .toggler:before { display: inline-block; margin-right: 2pt; }
+li.tree-empty > .toggler { opacity: 0.3; cursor: default; }
+li.tree-empty > .toggler:before { content: " "; }
+li.tree-closed > .toggler:before {
+    content: "";
+    height: 0;
+    width: 0;
+    border-color: transparent blue;
+    border-style: solid;
+    border-width: 0.25em 0 0.25em 0.5em;
+}
+li.tree-opened > .toggler:before {
+    content: "";
+    height: 0;
+    width: 0;
+    border-color: blue transparent ;
+    border-style: solid;
+    border-width: 0.5em 0.25em 0 0.25em;
+}
+</style>
+ 
+ <link rel="icon" href="logo.ico">
+ 
+ </head>
+ 
+ <body style="font-size:15px;background: #ECECEC; margin:80px; color:#333;">
+ 
+<h3>Query</h3>
+<b>
+  <font color=blue>?-</font> 
+holdsAt(light_red,A).
+<br><br>
+ <br> 
+A#>2,A#<3 ?<br>
+</b>
+<br><br>
+<h3>Model</h3>
+
+holdsAt(light_red,A │{A#>2,A#<3}) ,  initiates(turn_on,light_on,2) ,  happens(turn_on,2) ,  trajectory(light_on,2,light_red,A │{A#>2,A#<3}) ,  not stoppedIn(2,light_on,A │{A#>2,A#<3}) ,  not -holdsAt(B │{B\=light_on},C │{C#=<0}) ,  not -holdsAt(B │{B\=light_on},D │{D#>0}) ,  not terminates(E │{E\=turn_off},B │{B\=light_on},F │{F#=<0}) ,  not terminates(turn_off,B │{B\=light_on},F │{F#=<0}) ,  not -holdsAt(light_on,G │{G#=<0}) ,  not -holdsAt(light_on,H │{H#>0}) ,  not terminates(I │{I\=turn_off},light_on,J │{J#=<0}) ,  terminates(turn_off,light_on,J │{J#=<0}) ,  not happens(turn_off,J │{J#=<0})
+
+<br><br>
+<h3> Justification <button onclick="expand()">Expand All</button><button onclick="collapse()">Collapse All</button></h3>
+ <ul class="tree">
+     <li> 
+       holdsAt(light_red,A │{A#>2,A#<3}) :-
+       <ul>
+         <li> 
+           initiates(turn_on,light_on,2),
+         </li>
+         <li> 
+           happens(turn_on,2),
+         </li>
+         <li> 
+           trajectory(light_on,2,light_red,A │{A#>2,A#<3}) :-
+           <ul>
+             <li> 
+               2 #< A,
+             </li>
+             <li> 
+               A #< 2+1.
+             </li> 
+         </ul> 
+         </li> 
+         <li> 
+           not stoppedIn(2,light_on,A │{A#>2,A#<3}) :-
+           <ul>
+             <li> 
+               not o_stoppedIn1(2,light_on,A │{A#>2,A#<3}) :-
+               <ul>
+                 <li> 
+                   forall(K,forall(L,not o_stoppedIn1(2,light_on,A │{A#>2,A#<3},K,L))) :-
+                   <ul>
+                     <li> 
+                       forall(L,not o_stoppedIn1(2,light_on,A │{A#>2,A#<3},M │{M#=<2},L)) :-
+                       <ul>
+                         <li> 
+                           not o_stoppedIn1(2,light_on,A │{A#>2,A#<3},M │{M#=<2},N) :-
+                           <ul>
+                             <li> 
+                               2 #>= M.
+                             </li> 
+                         </ul> 
+                         </li> 
+                     </ul> 
+                     </li> 
+                     <li> 
+                       forall(L,not o_stoppedIn1(2,light_on,A │{A#>2,A#<3},O │{O#>2},L)) :-
+                       <ul>
+                         <li> 
+                           not o_stoppedIn1(2,light_on,A │{A#>2,A#<3},O │{O#>2},P) :-
+                           <ul>
+                             <li> 
+                               2 #< O,
+                             </li>
+                             <li> 
+                               O #>= A.
+                             </li> 
+                         </ul> 
+                         </li> 
+                     </ul> 
+                     </li> 
+                 </ul> 
+                 </li> 
+             </ul> 
+             </li> 
+             <li> 
+               not o_stoppedIn2(2,light_on,A │{A#>2,A#<3}) :-
+               <ul>
+                 <li> 
+                   forall(Q,forall(R,not o_stoppedIn2(2,light_on,A │{A#>2,A#<3},Q,R))) :-
+                   <ul>
+                     <li> 
+                       forall(R,not o_stoppedIn2(2,light_on,A │{A#>2,A#<3},S │{S#=<2},R)) :-
+                       <ul>
+                         <li> 
+                           not o_stoppedIn2(2,light_on,A │{A#>2,A#<3},S │{S#=<2},T) :-
+                           <ul>
+                             <li> 
+                               2 #>= S.
+                             </li> 
+                         </ul> 
+                         </li> 
+                     </ul> 
+                     </li> 
+                     <li> 
+                       forall(R,not o_stoppedIn2(2,light_on,A │{A#>2,A#<3},U │{U#>2},R)) :-
+                       <ul>
+                         <li> 
+                           not o_stoppedIn2(2,light_on,A │{A#>2,A#<3},U │{U#>2},V) :-
+                           <ul>
+                             <li> 
+                               2 #< U,
+                             </li>
+                             <li> 
+                               U #>= A.
+                             </li> 
+                         </ul> 
+                         </li> 
+                     </ul> 
+                     </li> 
+                 </ul> 
+                 </li> 
+             </ul> 
+             </li> 
+         </ul> 
+         </li> 
+     </ul> 
+     </li> 
+     <li> 
+       add_to_query :-
+       <ul>
+         <li> 
+           o_nmr_check :-
+           <ul>
+             <li> 
+               not o_chk1 :-
+               <ul>
+                 <li> 
+                   not o__chk11 :-
+                   <ul>
+                     <li> 
+                       forall(W,forall(X,not o__chk11(W,X))) :-
+                       <ul>
+                         <li> 
+                           forall(X,not o__chk11(B │{B\=light_on},X)) :-
+                           <ul>
+                             <li> 
+                               not o__chk11(B │{B\=light_on},C │{C#=<0}) :-
+                               <ul>
+                                 <li> 
+                                   not -holdsAt(B │{B\=light_on},C │{C#=<0}) :-
+                                   <ul>
+                                     <li> 
+                                       not o_c_holdsAt1(B │{B\=light_on},C │{C#=<0}) :-
+                                       <ul>
+                                         <li> 
+                                           0 #>= C.
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                     <li> 
+                                       not o_c_holdsAt2(B │{B\=light_on},C │{C#=<0}) :-
+                                       <ul>
+                                         <li> 
+                                           forall(Y,forall(Z,not o_c_holdsAt2(B │{B\=light_on},C │{C#=<0},Y,Z))) :-
+                                           <ul>
+                                             <li> 
+                                               forall(Z,not o_c_holdsAt2(B │{B\=light_on},C │{C#=<0},A1,Z)) :-
+                                               <ul>
+                                                 <li> 
+                                                   not o_c_holdsAt2(B │{B\=light_on},C │{C#=<0},A1,B1) :-
+                                                   <ul>
+                                                     <li> 
+                                                       A1 #>= C.
+                                                     </li> 
+                                                 </ul> 
+                                                 </li> 
+                                             </ul> 
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                             <li> 
+                               not o__chk11(B │{B\=light_on},D │{D#>0}) :-
+                               <ul>
+                                 <li> 
+                                   not -holdsAt(B │{B\=light_on},D │{D#>0}) :-
+                                   <ul>
+                                     <li> 
+                                       not o_c_holdsAt1(B │{B\=light_on},D │{D#>0}) :-
+                                       <ul>
+                                         <li> 
+                                           0 #< D,
+                                         </li>
+                                         <li> 
+                                           not initiallyN(B │{B\=light_on}).
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                     <li> 
+                                       not o_c_holdsAt2(B │{B\=light_on},D │{D#>0}) :-
+                                       <ul>
+                                         <li> 
+                                           forall(C1,forall(D1,not o_c_holdsAt2(B │{B\=light_on},D │{D#>0},C1,D1))) :-
+                                           <ul>
+                                             <li> 
+                                               forall(D1,not o_c_holdsAt2(B │{B\=light_on},D │{D#>0},E1 │{E1#>0},D1)) :-
+                                               <ul>
+                                                 <li> 
+                                                   not o_c_holdsAt2(B │{B\=light_on},D │{D#>0},E1 │{E1#>0},F1) :-
+                                                   <ul>
+                                                     <li> 
+                                                       E1 #>= D.
+                                                     </li> 
+                                                 </ul> 
+                                                 </li> 
+                                             </ul> 
+                                             </li> 
+                                             <li> 
+                                               forall(D1,not o_c_holdsAt2(B │{B\=light_on},D │{D#>0},F │{F#=<0},D1)) :-
+                                               <ul>
+                                                 <li> 
+                                                   not o_c_holdsAt2(B │{B\=light_on},D │{D#>0},F │{F#=<0},E │{E\=turn_off}) :-
+                                                   <ul>
+                                                     <li> 
+                                                       F #< D,
+                                                     </li>
+                                                     <li> 
+                                                       not terminates(E │{E\=turn_off},B │{B\=light_on},F │{F#=<0}) :-
+                                                       <ul>
+                                                         <li> 
+                                                           not o_terminates1(E │{E\=turn_off},B │{B\=light_on},F │{F#=<0}) :-
+                                                           <ul>
+                                                             <li> 
+                                                               E \= turn_off.
+                                                             </li> 
+                                                         </ul> 
+                                                         </li> 
+                                                     </ul> 
+                                                     </li> 
+                                                 </ul> 
+                                                 </li> 
+                                                 <li> 
+                                                   not o_c_holdsAt2(B │{B\=light_on},D │{D#>0},F │{F#=<0},turn_off) :-
+                                                   <ul>
+                                                     <li> 
+                                                       F #< D,
+                                                     </li>
+                                                     <li> 
+                                                       not terminates(turn_off,B │{B\=light_on},F │{F#=<0}) :-
+                                                       <ul>
+                                                         <li> 
+                                                           not o_terminates1(turn_off,B │{B\=light_on},F │{F#=<0}) :-
+                                                           <ul>
+                                                             <li> 
+                                                               turn_off=turn_off,
+                                                             </li>
+                                                             <li> 
+                                                               B \= light_on.
+                                                             </li> 
+                                                         </ul> 
+                                                         </li> 
+                                                     </ul> 
+                                                     </li> 
+                                                 </ul> 
+                                                 </li> 
+                                             </ul> 
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                         <li> 
+                           forall(X,not o__chk11(light_on,X)) :-
+                           <ul>
+                             <li> 
+                               not o__chk11(light_on,G │{G#=<0}) :-
+                               <ul>
+                                 <li> 
+                                   not -holdsAt(light_on,G │{G#=<0}) :-
+                                   <ul>
+                                     <li> 
+                                       not o_c_holdsAt1(light_on,G │{G#=<0}) :-
+                                       <ul>
+                                         <li> 
+                                           0 #>= G.
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                     <li> 
+                                       not o_c_holdsAt2(light_on,G │{G#=<0}) :-
+                                       <ul>
+                                         <li> 
+                                           forall(G1,forall(H1,not o_c_holdsAt2(light_on,G │{G#=<0},G1,H1))) :-
+                                           <ul>
+                                             <li> 
+                                               forall(H1,not o_c_holdsAt2(light_on,G │{G#=<0},I1,H1)) :-
+                                               <ul>
+                                                 <li> 
+                                                   not o_c_holdsAt2(light_on,G │{G#=<0},I1,J1) :-
+                                                   <ul>
+                                                     <li> 
+                                                       I1 #>= G.
+                                                     </li> 
+                                                 </ul> 
+                                                 </li> 
+                                             </ul> 
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                             <li> 
+                               not o__chk11(light_on,H │{H#>0}) :-
+                               <ul>
+                                 <li> 
+                                   not -holdsAt(light_on,H │{H#>0}) :-
+                                   <ul>
+                                     <li> 
+                                       not o_c_holdsAt1(light_on,H │{H#>0}) :-
+                                       <ul>
+                                         <li> 
+                                           0 #< H,
+                                         </li>
+                                         <li> 
+                                           not initiallyN(light_on).
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                     <li> 
+                                       not o_c_holdsAt2(light_on,H │{H#>0}) :-
+                                       <ul>
+                                         <li> 
+                                           forall(K1,forall(L1,not o_c_holdsAt2(light_on,H │{H#>0},K1,L1))) :-
+                                           <ul>
+                                             <li> 
+                                               forall(L1,not o_c_holdsAt2(light_on,H │{H#>0},M1 │{M1#>0},L1)) :-
+                                               <ul>
+                                                 <li> 
+                                                   not o_c_holdsAt2(light_on,H │{H#>0},M1 │{M1#>0},N1) :-
+                                                   <ul>
+                                                     <li> 
+                                                       M1 #>= H.
+                                                     </li> 
+                                                 </ul> 
+                                                 </li> 
+                                             </ul> 
+                                             </li> 
+                                             <li> 
+                                               forall(L1,not o_c_holdsAt2(light_on,H │{H#>0},J │{J#=<0},L1)) :-
+                                               <ul>
+                                                 <li> 
+                                                   not o_c_holdsAt2(light_on,H │{H#>0},J │{J#=<0},I │{I\=turn_off}) :-
+                                                   <ul>
+                                                     <li> 
+                                                       J #< H,
+                                                     </li>
+                                                     <li> 
+                                                       not terminates(I │{I\=turn_off},light_on,J │{J#=<0}) :-
+                                                       <ul>
+                                                         <li> 
+                                                           not o_terminates1(I │{I\=turn_off},light_on,J │{J#=<0}) :-
+                                                           <ul>
+                                                             <li> 
+                                                               I \= turn_off.
+                                                             </li> 
+                                                         </ul> 
+                                                         </li> 
+                                                     </ul> 
+                                                     </li> 
+                                                 </ul> 
+                                                 </li> 
+                                                 <li> 
+                                                   not o_c_holdsAt2(light_on,H │{H#>0},J │{J#=<0},turn_off) :-
+                                                   <ul>
+                                                     <li> 
+                                                       J #< H,
+                                                     </li>
+                                                     <li> 
+                                                       terminates(turn_off,light_on,J │{J#=<0}),
+                                                     </li>
+                                                     <li> 
+                                                       not happens(turn_off,J │{J#=<0}) :-
+                                                       <ul>
+                                                         <li> 
+                                                           not o_happens1(turn_off,J │{J#=<0}) :-
+                                                           <ul>
+                                                             <li> 
+                                                               turn_off \= turn_on.
+                                                             </li> 
+                                                         </ul> 
+                                                         </li> 
+                                                         <li> 
+                                                           not o_happens2(turn_off,J │{J#=<0}) :-
+                                                           <ul>
+                                                             <li> 
+                                                               turn_off=turn_off,
+                                                             </li>
+                                                             <li> 
+                                                               J \= 4.
+                                                             </li> 
+                                                         </ul> 
+                                                         </li> 
+                                                         <li> 
+                                                           not o_happens3(turn_off,J │{J#=<0}) :-
+                                                           <ul>
+                                                             <li> 
+                                                               turn_off \= turn_on.
+                                                             </li> 
+                                                         </ul> 
+                                                         </li> 
+                                                     </ul> 
+                                                     </li> 
+                                                 </ul> 
+                                                 </li> 
+                                             </ul> 
+                                             </li> 
+                                         </ul> 
+                                         </li> 
+                                     </ul> 
+                                     </li> 
+                                 </ul> 
+                                 </li> 
+                             </ul> 
+                             </li> 
+                         </ul> 
+                         </li> 
+                     </ul> 
+                     </li> 
+                 </ul> 
+                 </li> 
+             </ul> 
+             </li> 
+         </ul> 
+         </li> 
+     </ul> 
+     </li> 
+</ul>
+
+<script
+  src="https://code.jquery.com/jquery-1.11.2.min.js"
+  integrity="sha256-Ls0pXSlb7AYs7evhd+VLnWsZ/AqEHcXBeMZUycz/CcA="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+(function($){
+        $.fn.expand = function(options) {
+            options = options || {};
+            options.delay = options.delay || 0;
+            
+            this.find("> li").each(function() {
+                e = $(this)
+                var subtree = e.find('> ul');
+
+                if (subtree.length > 0) {
+                    e.addClass('tree-opened');
+                    e.removeClass('tree-closed');
+
+                    subtree.slideDown(options.delay);
+                    subtree.show(options.delay);
+
+                    subtree.expand(options);
+                } 
+            });
+            return true;
+        }
+
+        $.fn.collapse = function(options) {
+            options = options || {};
+            options.delay = options.delay || 0;
+            
+            this.find("> li").each(function() {
+                e = $(this)
+                var subtree = e.find('> ul');
+
+                if (subtree.length > 0) {
+                    e.removeClass('tree-opened');
+                    e.addClass('tree-closed');
+
+                    subtree.slideUp(options.delay);
+                    subtree.hide(options.delay);
+
+                    subtree.collapse(options);
+                } 
+            });
+            return true;
+        }
+
+    $.fn.treemenu = function(options) {
+        options = options || {};
+        options.delay = options.delay || 0;
+        options.openActive = options.openActive || false;
+        options.closeOther = options.closeOther || false;
+        options.activeSelector = options.activeSelector || ".active";
+
+        this.addClass("treemenu");
+
+        if (!options.nonroot) {
+            this.addClass("treemenu-root");
+        }
+
+        options.nonroot = true;
+
+        this.find("> li").each(function() {
+            e = $(this);
+            var subtree = e.find('> ul');
+            var button = e.find('.toggler').eq(0);
+
+            if(button.length == 0) {
+                // create toggler
+                var button = $('<span>');
+                button.addClass('toggler');
+                e.prepend(button);
+            }
+
+            if(subtree.length > 0) {
+                subtree.hide();
+
+                e.addClass('tree-closed');
+
+                e.find(button).click(function() {
+                    var li = $(this).parent('li');
+
+                    if (options.closeOther && li.hasClass('tree-closed')) {
+                        var siblings = li.parent('ul').find("li:not(.tree-empty)");
+                        siblings.removeClass("tree-opened");
+                        siblings.addClass("tree-closed");
+                        siblings.removeClass(options.activeSelector);
+                        siblings.find('> ul').slideUp(options.delay);
+                    }
+
+                    li.find('> ul').slideToggle(options.delay);
+                    li.toggleClass('tree-opened');
+                    li.toggleClass('tree-closed');
+                    li.toggleClass(options.activeSelector);
+                });
+
+                $(this).find('> ul').treemenu(options);
+            } else {
+                $(this).addClass('tree-empty');
+            }
+        });
+
+        if (options.openActive) {
+            var cls = this.attr("class");
+
+            this.find(options.activeSelector).each(function(){
+                var el = $(this).parent();
+
+                while (el.attr("class") !== cls) {
+                    el.find('> ul').show();
+                    if(el.prop("tagName") === 'UL') {
+                        el.show();
+                    } else if (el.prop("tagName") === 'LI') {
+                        el.removeClass('tree-closed');
+                        el.addClass("tree-opened");
+                        el.show();
+                    }
+
+                    el = el.parent();
+                }
+            });
+        }
+
+        return this;
+    }
+})(jQuery);
+</script>
+<script>
+function expand(){
+    $(".tree").expand({delay:1000});
+}
+
+function collapse(){
+    $(".tree").collapse({delay:1000});
+}
+</script>
+
+ 
+
+ <script>
+ $(function(){
+        $(".tree").treemenu({delay:100}).openActive();
+    });
+ </script>
+ 
+ </body>
+ </html>
