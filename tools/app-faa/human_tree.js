@@ -9,8 +9,8 @@ english_text = {
  'not(aircrafts_nearby)' : 'there were no aircrafts nearby', 
  'yield_right_of_way' : 'the aircraft yielded right of way to all nearby aircrafts',
  'not(yield_right_of_way)' : 'the aircraft failed to yield right of way to nearby aircrafts',
- 'used_spotted' : 'the operator used a spotter',
- 'not(used_spotted)' : 'the operator did not use a spotter',
+ 'used_spotter' : 'the operator used a spotter',
+ 'not(used_spotter)' : 'the operator did not use a spotter',
  'flew_above_400_ft' : 'the aircraft flew above 400 feet',
  'not(flew_above_400_ft)' : 'the aircraft never flew above 400 feet',
  'within_3_miles' : 'the aircraft was within 3 miles of the airport',
@@ -46,7 +46,7 @@ english_text = {
 'air_show_team_ama_compliant' : 'the aircraft team are an officially designated AMA Airshow team',
 'not(air_show_team_ama_compliant)' : 'the aircraft team are not an official designated AMA Airshow team',
 'alcohol_drug_influence' : 'the operator was under the influence of alcohol or drugs',
-'not(alcohol_druc_influence)' : 'the operator was not under the influence of alcohol or drugs',
+'not(alcohol_drug_influence)' : 'the operator was not under the influence of alcohol or drugs',
 'helmets_worn' : 'the operator wore a helmet',
 'not(helmets_worn)' : 'the operator did not wear a helmet',
 'osha_approved' : 'the helmets worn are OSHA/DOT/ANSI/SNELL/NOCSAE approved',
@@ -99,7 +99,6 @@ english_text["advanced_system_or_fpv"] = "the aircraft is an advanced system or 
 english_text["not(advanced_system_or_fpv)"] = "the aircraft is not an advanced system or fpv";
 english_text["ama_advanced_flight_system_programming"] = "the aircraft is compliant with AMA Advanced Flight System programming";
 english_text["not(ama_advanced_flight_system_programming)"] = "the aircraft is not compliant with AMA Advanced Flight System programming";
-
 
 
 human_tree = function(encoded_html){

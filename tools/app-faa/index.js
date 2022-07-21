@@ -2,6 +2,9 @@
 //import { json } from './survey_json.js';
 
 
+max_responses = 10;
+responses = 0;
+
 $('#next').hide();
 $('#why').hide();
 Survey
@@ -94,6 +97,7 @@ survey
     window.json_trees = [];
     var pengine;
     get_all_models("violation", scasp_src, non_compliant_models);
+
     payload = {
         "server" : "http://localhost:4000/pengine",
         "format" : "json",
@@ -104,12 +108,73 @@ survey
         "destroy" : false,
         "onsuccess" : function(response, status, type){
              json_trees[json_trees.length] = response.data[0][0];
+
+              window.model_list = "<ul>" ; 
+            var index = 0;
+            non_compliant_models.forEach(function(model){
+                    possible_violations.forEach(function(violation){
+                        if(model.includes(violation)){
+                            var rule = violation.split("_")[1];
+                            model_list += '<li  onclick="rule_clicked(event)" rule=' + rule + " index= " + index  + ">";
+                            model_list += "Rule " + rule + " violated";
+                            model_list += "</li>";
+                        }
+                    });
+                    index ++;
+             });
+            model_list += "</ul>";
+            var div = $('#surveyResult')[0];
+            div.innerHTML = model_list;
             if(response.more){
              pengine.next();
             }
         },
+
+        "onabort" : function(a,b,c){
+            if(non_compliant_models.length == 0){
+                $('#surveyResult')[0].innerHTML = "You are 100% compliant!";
+                return;
+            }
+             window.model_list = "<ul>" ; 
+            var index = 0;
+            non_compliant_models.forEach(function(model){
+                    possible_violations.forEach(function(violation){
+                        if(model.includes(violation)){
+                            var rule = violation.split("_")[1];
+                            model_list += '<li  onclick="rule_clicked(event)" rule=' + rule + " index= " + index  + ">";
+                            model_list += "Rule " + rule + " violated";
+                            model_list += "</li>";
+                        }
+                    });
+                    index ++;
+             });
+            model_list += "</ul>";
+            var div = $('#surveyResult')[0];
+            div.innerHTML = model_list;
+        
+          },
         "onerror" : function(a, b, c){
-         
+           if(non_compliant_models.length == 0){
+                $('#surveyResult')[0].innerHTML = "You are 100% compliant!";
+                return;
+            }
+            /* window.model_list = "<ul>" ; 
+            var index = 0;
+            non_compliant_models.forEach(function(model){
+                    possible_violations.forEach(function(violation){
+                        if(model.includes(violation)){
+                            var rule = violation.split("_")[1];
+                            model_list += '<li  onclick="rule_clicked(event)" rule=' + rule + " index= " + index  + ">";
+                            model_list += "Rule " + rule + " violated";
+                            model_list += "</li>";
+                        }
+                    });
+                    index ++;
+             });
+            model_list += "</ul>";
+            var div = $('#surveyResult')[0];
+            div.innerHTML = model_list;*/
+        
         },
         "onfailure" : function(a,b, c){
             if(non_compliant_models.length == 0){
