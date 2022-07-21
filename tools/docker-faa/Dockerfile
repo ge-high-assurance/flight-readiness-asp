@@ -3,6 +3,7 @@ LABEL maintainer "Dave Curylo <dave@curylo.org>, Michael Hendricks <michael@ndri
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     libtcmalloc-minimal4 \
+    unzip \
     libarchive13 \
     libyaml-dev \
     libgmp10 \
@@ -70,6 +71,9 @@ RUN set -eux; \
 RUN apt-get update && apt-get install -y git; \
     git clone https://github.com/SWI-Prolog/pengines.git;     
 RUN rm -r /pengines/apps/swish 
-COPY ./swish /pengines/apps/swish     
+COPY swish_from_docker.zip /swish_from_docker.zip
+RUN unzip /swish_from_docker.zip -d /pengines/apps/ 
+RUN chmod a+rwx -R /pengines
 RUN echo ':- if(exists_source(apps(faa/app))). :- use_module(apps(faa/app)).  :- endif.' >> /pengines/load.pl
-CMD ["swipl", "/pengines/run.pl"]
+WORKDIR /pengines
+CMD ["swipl", "run.pl"]
