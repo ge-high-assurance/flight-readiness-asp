@@ -12,8 +12,8 @@ Setting up the app for use
 --------------------------
 
 1) Fetch the sources of this repository using git clone
-2) Run docker image saratge/docker-faa in interactive mode, while sharing the app's source with the container
-     docker run -it -p 4000:3030 -v <folder containing app-faa source>:/pengines/apps/faa saratge/docker-faa
+2) Run docker image saratutd/docker-faa in interactive mode, while sharing the app's source with the container
+     docker run -it -p 4000:3030 -v <folder containing app-faa source>:/pengines/apps/faa saratutd/docker-faa
   
     For example if the path of folder containing app source is: 
       /home/someuser/flight-readiness-asp/tools/app-faa
@@ -25,3 +25,9 @@ Setting up the app for use
 5) Go to admin page --> enter username and password --> go to Applications --> Under swish application, configure the field 
    "Maximum number of local slave pengines a master pengine can create" to 1000  --> Click on Apply
 6) The app itself can be launched on the browser using: localhost:4000/apps/faa/index.html
+
+
+Building docker image locally
+----------------------------
+1) Navigate into tools/docker-faa folder
+2) Run docker build -t docker-faa ./
