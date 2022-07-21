@@ -39,20 +39,49 @@ intersect = function(literals1, literals2){
     return false;
 }
 
+diff = function(compliant, non_compliant){
+    var count_diff = 0;
+    non_compliant.forEach(function(atom){
+        if(!compliant.includes(atom)){
+          count_diff++;
+        }
+    });
+    return count_diff;
+}
 
 
 min_explanation = function(compliant_mods, model){
     var min_size = Infinity;
+    var least_diff  = Infinity;
     var current_model = [];
+    var returned_models = [];
     compliant_mods.forEach(function(cmodel){
           if(intersect(get_literals(cmodel), get_literals(model))){
-              if(cmodel.length < min_size){
+             /* if(cmodel.length < min_size){
                   current_model = cmodel;
                   min_size = current_model.length;
+              }*/
+
+              //find model with least differences
+              var diff_size = diff(cmodel, model);
+              if(diff_size < least_diff){
+                   current_model = cmodel;
+                   least_diff = diff_size;
               }
           }
     });
-    return current_model;
+
+    compliant_mods.forEach(function(cmodel){
+            if(intersect(get_literals(cmodel), get_literals(model))){
+                    if(diff(cmodel, model) == least_diff){
+                      returned_models[returned_models.length] = cmodel;
+                    }
+      }
+    });
+
+
+    //return [current_model];
+    return returned_models;
 }
 
 get_abducibles = function(){

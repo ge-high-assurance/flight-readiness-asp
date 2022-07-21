@@ -39,6 +39,20 @@ fact_literals = [
 ];
 
 
+/*fact_violation_map = [
+"violation_1" : ["has_prior_history_of_violation"],
+"violation_2" : ["human_carrying_aircraft", "yield_right_of_way", "used_spotter"],
+"violation_3" : [""],
+"violation_4" : [],
+"violation_5" : [],
+"violation_6" : [],
+"violation_7" : [],
+"violation_8" : [],
+"violation_9" : []
+"violation_10" : []
+];*/
+
+
 
 possible_violations = [
     "violation_1", 
@@ -272,14 +286,22 @@ showMinimalExplanation = function(){
       setTimeout(function(){
       var min_expl = min_explanation(compliant_mods, non_compliant_models[current_index]);
       expl = "<p> Conditions to be changed or added towards compliance </p>";
+      min_expl.forEach(function(cmodel){
+     // expl += "\n <p> Candidate minimal explanation: </p>"; 
       expl += "<ul>" ;
-      min_expl.forEach(function(literal){
+        
+        cmodel.forEach(function(literal){
+             if(non_compliant_models[current_index].includes(literal)){
+              return;
+             }
              if(min_expl_english_text.hasOwnProperty(literal)){
                  expl += "<li>" + min_expl_english_text[literal] + "</li>";
              }
+      
       });
       
       expl += "</ul>";
+      });
       $('#minimal')[0].innerHTML = expl;
     }, 2000);
 }
