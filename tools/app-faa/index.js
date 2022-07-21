@@ -9,11 +9,33 @@ Survey
     .applyTheme("defaultV2");
 
 window.survey = new Survey.Model(json);
-fact_literals = ["has_prior_history_of_violation", "aircrafts_nearby",  "yield_right_of_way", "used_spotter","flew_above_400_ft",
+
+/*%fact_literals = ["has_prior_history_of_violation", "aircrafts_nearby",  "yield_right_of_way", "used_spotter","flew_above_400_ft",
+%"within_3_miles","notify_authority", "expert_assistance", "max_takeoff_weight","flown_under_ama_rules","flown_in_santioned_show","manuevers_established_beforehand",
+%"has_name_address","flown_indoors","address_affixed","has_metal_blade_rollers","carries_pyrotechnic_devices",
+%"devices_produce_smoke_when_burnt","devices_securely_attached","g_series_rocket_motors","g_series_firmly_attached",
+%"air_show_team_ama_compliant","alcohol_drug_influence","helmets_worn","osha_approved","helmets_under_comparable_standards",
+%"aircraft_weighs_above_55_pounds", "certified_by_ama_large_program"];
+*/
+
+fact_literals = [
+   "human_carrying_aircraft",
+   "directly_over_people_vehicles_structures",
+   "ff_cl", "ama_safety_programming",
+   "turbine_model", "ama_gas_turbine_program",
+   "uses_established_safety_line",
+   "closer_than_25_ft", "landing_takeoff", "ama_competition_regulation",
+   "visual_contact_using_enhancement", "advanced_system_or_fpv", "ama_advanced_flight_system_programming",
+   "has_prior_history_of_violation", "aircrafts_nearby",  "yield_right_of_way", "used_spotter","flew_above_400_ft",
 "within_3_miles","notify_authority", "expert_assistance", "max_takeoff_weight","flown_under_ama_rules","flown_in_santioned_show","manuevers_established_beforehand",
 "has_name_address","flown_indoors","address_affixed","has_metal_blade_rollers","carries_pyrotechnic_devices",
 "devices_produce_smoke_when_burnt","devices_securely_attached","g_series_rocket_motors","g_series_firmly_attached",
-"air_show_team_ama_compliant","alcohol_drug_influence","helmets_worn","osha_approved","helmets_under_comparable_standards"];
+"air_show_team_ama_compliant","alcohol_drug_influence","helmets_worn","osha_approved","helmets_under_comparable_standards",
+"aircraft_weighs_above_55_pounds", "certified_by_ama_large_program"
+
+];
+
+
 
 possible_violations = [
     "violation_1", 

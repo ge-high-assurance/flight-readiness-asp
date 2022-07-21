@@ -67,8 +67,38 @@ english_text['violation_8'] = 'Rule 8 is violated';
 english_text['violation_9'] = 'Rule 9 is violated';
 english_text['violation_10'] = 'Rule 10 is violated';
 
+english_text["aircraft_weighs_above_55_pounds"] = "the aircraft weighs above 55 pounds, including fuel";
+english_text["not(aircraft_weighs_above_55_pounds)"] = "the aircraft does not weigh above 55 pounds, including fuel";
+english_text["certified_by_ama_large_program"] = "the aircraft is certified by AMA large program";
+english_text["not(certified_by_ama_large_program)"] = "the aircraft is not be certified by AMA large program";
 
 
+english_text["human_carrying_aircraft"] = "there were human carrying aircrafts flying nearby";
+english_text["not(human_carrying_aircraft)"] = "there were no human carrying aircrafts flying nearby";
+english_text["directly_over_people_vehicles_structures"] = "the aircraft directly flew over people/moving vehicles/occupied structures";
+english_text["not(directly_over_people_vehicles_structures)"] = "the aircraft did not fly over either people/moving vehicles/occupied structures";
+english_text["ff_cl"] = "the aircraft is of either a free flight (FF) or a control line (CL) model";
+english_text["not(ff_cl)"] = "the aircraft is of neither a free flight (FF) nor a control line (CL) model";
+english_text["ama_safety_programming"] = "the aircraft complies with AMA safety programming";
+english_text["not(ama_safety_programming)"] = "the aircraft does not comply with AMA safety programming";
+english_text["turbine_model"] = "the aircraft is a turbine engine model";
+english_text["not(turbine_model)"] = "the aircraft is not a turbine engine model";
+english_text["ama_gas_turbine_program"] = "the aircraft is compliant with AMA Gas Turbine Program";
+english_text["not(ama_gas_turbine_program)"] = "the aircraft is not compliant with AMA Gas Turbine Program";
+english_text["uses_established_safety_line"] = "the operator uses an established safety line to separate spectators and bystancers";
+english_text["not(uses_established_safety_line)"] = "the operator does not use an established safety line to separate spectators and bystancers";
+english_text["closer_than_25_ft"] = "the aircraft flew closer than 25 ft to some individual";
+english_text["not(closer_than_25_ft)"] = "the aircraft did not fly closer than 25 ft to any individual";
+english_text["landing_takeoff"] = "it was during landing or takeoff";
+english_text["not(landing_takeoff)"] = "it was not during landing or takeoff";
+english_text["ama_competition_regulation"] = "the operator was complying within AMA Competition regulations";
+english_text["not(ama_competition_regulation)"] =  "the operator was not complying within AMA Competition regulations";
+english_text["visual_contact_using_enhancement"] = "the operator maintains visual contact using enhancement";
+english_text["not(visual_contact_using_enhancement)"] = "the operator does not maintain visual contact using enhancement";
+english_text["advanced_system_or_fpv"] = "the aircraft is an advanced system or fpv";
+english_text["not(advanced_system_or_fpv)"] = "the aircraft is not an advanced system or fpv";
+english_text["ama_advanced_flight_system_programming"] = "the aircraft is compliant with AMA Advanced Flight System programming";
+english_text["not(ama_advanced_flight_system_programming)"] = "the aircraft is not compliant with AMA Advanced Flight System programming";
 
 
 
